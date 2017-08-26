@@ -4,9 +4,9 @@ import re
 
 ## environment
 testdir="./testcase"
-total=0
-success=0
-fail=0
+total_cases=0
+success_cases=0
+fail_cases=0
 
 print("Start!")
 
@@ -20,13 +20,10 @@ else:
     sys.exit(1)
 
 # run each scripts
-#test_cases = [f for f in os.listdir(testdir) if re.match(r'*.py', f)]
-test_list = [f for f in os.listdir(testdir)]
-print("test-cases", test_list)
-
-if re.match(r'*.py', "a.py"): # BUGBUG: Why does this not work?
-    print("match")
-
+test_cases = [f for f in os.listdir(testdir) if re.match(r'(.*).py', f)]
+#test_list = [f for f in os.listdir(testdir)]
+print("test-cases", test_cases)
+total_cases=len(test_cases)
 
 # terminate
-print("Finish!: total-test:%d pass:%d fail:%d" % (total, success, fail))
+print("Result: total:%d pass:%d fail:%d" % (total_cases, success_cases, fail_cases))
